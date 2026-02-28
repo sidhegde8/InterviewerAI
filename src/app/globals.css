@@ -7,48 +7,54 @@
 
 @layer base {
     :root {
-        --background: #050505;
-        --foreground: #ffffff;
+        --background: #000000;
+        --foreground: #EDEDED;
+        --muted: #8A8F98;
+        --border: #1E1F22;
+        --surface: #0A0A0A;
+        --surface-hover: #141517;
+        --accent: #5E6AD2;
+        --accent-glow: rgba(94, 106, 210, 0.4);
     }
 
     body {
-        @apply bg-[#050505] text-[#ededed] antialiased;
+        @apply bg-[var(--background)] text-[var(--foreground)] antialiased;
     }
 }
 
 @layer components {
 
-    /* Base Glass panel */
+    /* Focus heavily on flat elegant design, strict 1px borders */
     .glass-panel {
-        @apply bg-[oklch(0.12_0.02_260)] border border-[oklch(1_0_0/0.08)] rounded-2xl backdrop-blur-md shadow-xl;
+        @apply bg-[var(--surface)] border border-[var(--border)] rounded-xl;
     }
 
-    /* Primary CTA Button */
+    /* Primary CTA Button: flat, vivid, shadow, smooth scale */
     .btn-primary {
-        @apply inline-flex items-center justify-center font-medium rounded-xl text-white bg-gradient-to-r from-[oklch(0.55_0.18_250)] to-[oklch(0.48_0.2_280)] hover:from-[oklch(0.6_0.18_250)] hover:to-[oklch(0.53_0.2_280)] shadow-[0_4px_20px_-4px_oklch(0.55_0.18_250/0.4)] hover:shadow-[0_6px_25px_-4px_oklch(0.55_0.18_250/0.6)] transition-all duration-300;
+        @apply inline-flex items-center justify-center font-medium rounded-lg text-white bg-[var(--accent)] hover:brightness-110 active:scale-95 transition-all duration-200 shadow-[0_4px_14px_0_var(--accent-glow)] hover:shadow-[0_6px_20px_var(--accent-glow)];
     }
 
     /* Secondary/Outline Button */
     .btn-secondary {
-        @apply inline-flex items-center justify-center font-medium rounded-xl text-[oklch(0.85_0.01_260)] bg-[oklch(0.2_0.02_260)] border border-[oklch(1_0_0/0.08)] hover:bg-[oklch(0.25_0.02_260)] hover:text-white hover:border-[oklch(1_0_0/0.15)] transition-all duration-200;
+        @apply inline-flex items-center justify-center font-medium rounded-lg text-[var(--muted)] bg-transparent border border-[var(--border)] hover:bg-[var(--surface-hover)] hover:text-white active:scale-95 transition-all duration-200;
     }
 
     .card {
-        @apply bg-[oklch(0.12_0.02_260)] border border-[oklch(1_0_0/0.06)] rounded-2xl shadow-lg;
+        @apply bg-[var(--surface)] border border-[var(--border)] rounded-xl;
     }
 
     .glass-strong {
-        @apply bg-[oklch(0.08_0.02_260/0.7)] backdrop-blur-xl border-b border-[oklch(1_0_0/0.08)];
+        @apply bg-[var(--background)]/80 backdrop-blur-xl border-b border-[var(--border)];
     }
 
-    /* Gradients */
+    /* Linear style headings: white to soft gray gradient */
     .gradient-text {
-        @apply text-transparent bg-clip-text bg-gradient-to-r from-[oklch(0.8_0.1_250)] via-[oklch(0.9_0.05_250)] to-[oklch(0.7_0.15_280)];
+        @apply text-transparent bg-clip-text bg-gradient-to-r from-white to-[#8A8F98];
     }
 
     /* Inputs */
     .input-field {
-        @apply w-full bg-[oklch(0.12_0.02_260)] border border-[oklch(1_0_0/0.12)] focus:border-[oklch(0.55_0.18_250)] focus:ring-1 focus:ring-[oklch(0.55_0.18_250)] rounded-xl px-4 py-3 outline-none transition-all text-[oklch(0.9_0.01_260)] placeholder-[oklch(0.4_0.01_260)];
+        @apply w-full bg-[var(--surface)] border border-[var(--border)] focus:border-[var(--accent)] focus:ring-1 focus:ring-[var(--accent)] rounded-lg px-4 py-2.5 outline-none transition-all text-[var(--foreground)] placeholder-[var(--muted)];
     }
 
     /* Glowing accent card */
@@ -58,10 +64,10 @@
 
     .glow-accent::before {
         content: '';
-        @apply absolute -inset-1 bg-gradient-to-r from-[oklch(0.55_0.18_250/0.15)] to-transparent rounded-[inherit] -z-10 blur-xl;
+        @apply absolute -inset-1 bg-gradient-to-r from-[var(--accent-glow)] to-transparent rounded-[inherit] -z-10 blur-xl;
     }
 
     .typewriter-cursor {
-        @apply inline-block w-2 bg-[oklch(0.55_0.18_250)] ml-1 animate-pulse h-[1.1em] align-middle;
+        @apply inline-block w-2 bg-[var(--accent)] ml-1 animate-pulse h-[1.1em] align-middle;
     }
 }

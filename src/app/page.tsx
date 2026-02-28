@@ -24,52 +24,52 @@ const FEATURES = [
 
 function MarketingPage({ mounted }: { mounted: boolean }) {
   return (
-    <main className="min-h-screen flex flex-col">
+    <main className="min-h-screen flex flex-col bg-[var(--background)]">
       {/* Nav */}
       <nav className="glass-strong fixed top-0 inset-x-0 z-50 px-6 py-4">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <div className="flex items-center gap-2">
             <span className="text-2xl">🤖</span>
-            <span className="font-[var(--font-display)] text-xl font-bold gradient-text">InterviewerAI</span>
+            <span className="font-[var(--font-display)] text-xl font-bold text-white">InterviewerAI</span>
           </div>
           <div className="flex items-center gap-3">
-            <Link href="/login" className="btn-secondary text-sm">Log in</Link>
-            <Link href="/login" className="btn-primary text-sm">Get started →</Link>
+            <Link href="/login" className="btn-secondary text-sm px-4 py-2">Log in</Link>
+            <Link href="/login" className="btn-primary text-sm px-4 py-2">Get started →</Link>
           </div>
         </div>
       </nav>
 
       {/* Hero */}
       <section className={`flex flex-col items-center justify-center text-center px-6 pt-40 pb-24 transition-all duration-1000 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[oklch(1_0_0/0.1)] bg-[oklch(0.17_0.02_260/0.6)] text-sm text-[oklch(0.72_0.17_165)] mb-6">
-          <span className="animate-pulse">●</span> Now powered by GPT-4o
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[var(--accent-glow)] bg-[var(--accent)]/10 text-sm text-[var(--accent)] mb-6 font-medium tracking-wide">
+          <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent)] animate-pulse"></span> Now powered by GPT-4o
         </div>
-        <h1 className="font-[var(--font-display)] text-5xl sm:text-6xl lg:text-7xl font-extrabold leading-tight max-w-4xl mb-6">
+        <h1 className="font-[var(--font-display)] text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.1] max-w-4xl mb-6 text-white">
           Your AI <span className="gradient-text"> Mock Interviewer</span><br />Available 24/7
         </h1>
-        <p className="text-lg sm:text-xl text-[oklch(0.65_0.01_260)] max-w-2xl mb-10 leading-relaxed">
+        <p className="text-lg sm:text-xl text-[var(--muted)] max-w-2xl mb-10 leading-relaxed">
           Practice technical coding interviews with a realistic AI interviewer that speaks, types problems, and gives you pointed follow-up questions — just like the real thing.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 mb-16">
-          <Link href="/login" className="btn-primary text-base px-8 py-3.5">🚀 Start Practicing Free</Link>
+          <Link href="/login" className="btn-primary text-base px-8 py-3.5">Start Practicing Free →</Link>
         </div>
       </section>
 
       {/* Feature grid */}
       <section className="px-6 pb-28">
         <div className="max-w-5xl mx-auto">
-          <h2 className="font-[var(--font-display)] text-3xl sm:text-4xl font-bold text-center mb-4">
-            Everything You Need to <span className="gradient-text">Ace the Interview</span>
+          <h2 className="font-[var(--font-display)] text-3xl sm:text-4xl font-bold text-center mb-4 tracking-tight text-white">
+            Everything You Need to <span className="text-[var(--accent)]">Ace the Interview</span>
           </h2>
-          <p className="text-center text-[oklch(0.55_0.01_260)] mb-14 max-w-2xl mx-auto">
+          <p className="text-center text-[var(--muted)] mb-14 max-w-2xl mx-auto">
             No more begging friends for practice sessions. Get unlimited, personalized mock interviews any time you want.
           </p>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {FEATURES.map((f) => (
-              <div key={f.title} className="card group cursor-default">
-                <div className="text-3xl mb-3">{f.icon}</div>
-                <h3 className="font-[var(--font-display)] text-lg font-semibold mb-2 group-hover:text-[oklch(0.76_0.10_250)] transition-colors">{f.title}</h3>
-                <p className="text-sm text-[oklch(0.55_0.01_260)] leading-relaxed">{f.description}</p>
+              <div key={f.title} className="card p-6 group cursor-default transition-colors hover:border-[var(--accent-glow)]">
+                <div className="text-3xl mb-4 bg-[var(--surface-hover)] w-12 h-12 flex items-center justify-center rounded-lg border border-[var(--border)]">{f.icon}</div>
+                <h3 className="font-semibold mb-2 group-hover:text-white transition-colors text-[var(--foreground)]">{f.title}</h3>
+                <p className="text-sm text-[var(--muted)] leading-relaxed">{f.description}</p>
               </div>
             ))}
           </div>
@@ -78,16 +78,18 @@ function MarketingPage({ mounted }: { mounted: boolean }) {
 
       {/* CTA */}
       <section className="px-6 pb-20">
-        <div className="max-w-3xl mx-auto text-center card glow-accent py-12 px-8">
-          <h2 className="font-[var(--font-display)] text-2xl sm:text-3xl font-bold mb-4">Ready to Level Up?</h2>
-          <p className="text-[oklch(0.55_0.01_260)] mb-8 max-w-lg mx-auto">Your next interview is closer than you think. Start practicing now and walk in with confidence.</p>
-          <Link href="/login" className="btn-primary text-base px-10 py-4">🚀 Create Free Account</Link>
+        <div className="max-w-3xl mx-auto text-center card py-16 px-8 relative overflow-hidden isolate">
+          <div className="absolute inset-0 bg-gradient-to-t from-[var(--accent)]/10 to-transparent -z-10" />
+          <h2 className="font-[var(--font-display)] text-2xl sm:text-3xl font-bold mb-4 tracking-tight text-white">Ready to Level Up?</h2>
+          <p className="text-[var(--muted)] mb-8 max-w-lg mx-auto">Your next interview is closer than you think. Start practicing now and walk in with confidence.</p>
+          <Link href="/login" className="btn-primary text-base px-10 py-4 shadow-lg shadow-[var(--accent)]/20">Create Free Account</Link>
         </div>
       </section>
 
-      <footer className="border-t border-[oklch(1_0_0/0.06)] py-8 px-6">
-        <div className="max-w-7xl mx-auto text-sm text-[oklch(0.4_0.01_260)]">
-          © 2026 InterviewerAI. Built with 💻 &amp; GPT-4o.
+      <footer className="border-t border-[var(--border)] py-8 px-6 bg-[var(--background)]">
+        <div className="max-w-7xl mx-auto text-sm text-[var(--muted)] flex justify-between items-center">
+          <span>© 2026 InterviewerAI.</span>
+          <span className="flex items-center gap-2">Built with <span className="text-[var(--foreground)]">Next.js & GPT-4o</span></span>
         </div>
       </footer>
     </main>
@@ -152,44 +154,48 @@ function DashboardHome({ user }: { user: User }) {
   const firstName = user.email?.split('@')[0] ?? 'there';
 
   return (
-    <div className="px-6 py-8 max-w-4xl mx-auto space-y-10">
+    <div className="px-6 py-10 max-w-5xl mx-auto space-y-12 animate-in fade-in duration-500">
       {/* Greeting */}
       <div>
-        <h1 className="font-[var(--font-display)] text-3xl font-bold mb-1">
-          Hey, <span className="gradient-text">{firstName}</span> 👋
+        <h1 className="font-[var(--font-display)] text-3xl font-bold mb-2 tracking-tight text-white">
+          Hey, {firstName} <span className="text-[var(--accent)]">👋</span>
         </h1>
-        <p className="text-[oklch(0.5_0.01_260)] text-sm">Ready to practice? Pick a mode below.</p>
+        <p className="text-[var(--muted)] text-sm">Ready to practice? Pick a mode below.</p>
       </div>
 
       {/* Quick-start cards */}
       <div className="grid sm:grid-cols-2 gap-5">
-        <Link href="/interview/setup" className="card group p-6 flex gap-5 items-start hover:border-[oklch(0.55_0.18_250/0.5)] transition-all">
-          <span className="text-4xl">💻</span>
+        <Link href="/interview/setup" className="card group p-6 flex gap-5 items-start hover:border-[var(--accent-glow)] transition-all bg-[var(--surface)] hover:bg-[var(--surface-hover)]">
+          <div className="w-12 h-12 rounded-lg bg-[var(--background)] border border-[var(--border)] flex items-center justify-center shrink-0">
+            <span className="text-2xl">💻</span>
+          </div>
           <div>
-            <h2 className="font-[var(--font-display)] font-semibold text-lg mb-1 group-hover:text-[oklch(0.76_0.10_250)] transition-colors">Technical Interview</h2>
-            <p className="text-sm text-[oklch(0.5_0.01_260)]">LeetCode-style problems with a live code editor, adaptive follow-ups, and detailed feedback.</p>
+            <h2 className="font-[var(--font-display)] font-semibold text-lg mb-1 group-hover:text-white transition-colors text-[var(--foreground)] tracking-tight">Technical Interview</h2>
+            <p className="text-sm text-[var(--muted)] leading-relaxed">LeetCode-style problems with a live code editor, adaptive follow-ups, and detailed feedback.</p>
           </div>
         </Link>
-        <Link href="/behavioral/setup" className="card group p-6 flex gap-5 items-start hover:border-[oklch(0.55_0.18_250/0.5)] transition-all">
-          <span className="text-4xl">🗣️</span>
+        <Link href="/behavioral/setup" className="card group p-6 flex gap-5 items-start hover:border-[var(--accent-glow)] transition-all bg-[var(--surface)] hover:bg-[var(--surface-hover)]">
+          <div className="w-12 h-12 rounded-lg bg-[var(--background)] border border-[var(--border)] flex items-center justify-center shrink-0">
+            <span className="text-2xl">🗣️</span>
+          </div>
           <div>
-            <h2 className="font-[var(--font-display)] font-semibold text-lg mb-1 group-hover:text-[oklch(0.76_0.10_250)] transition-colors">Behavioral Interview</h2>
-            <p className="text-sm text-[oklch(0.5_0.01_260)]">Resume grill, STAR-format behavioral, or a mixed mode. Evidence-backed scoring.</p>
+            <h2 className="font-[var(--font-display)] font-semibold text-lg mb-1 group-hover:text-white transition-colors text-[var(--foreground)] tracking-tight">Behavioral Interview</h2>
+            <p className="text-sm text-[var(--muted)] leading-relaxed">Resume grill, STAR-format behavioral, or a mixed mode. Evidence-backed scoring.</p>
           </div>
         </Link>
       </div>
 
       {/* Stats row */}
       {stats.total > 0 && (
-        <div className="grid grid-cols-3 gap-4">
+        <div className="grid grid-cols-3 gap-5">
           {[
-            { label: 'Sessions', value: stats.total },
-            { label: 'Avg Score', value: stats.avgScore ? `${stats.avgScore.toFixed(1)}/10` : '—' },
+            { label: 'Total Sessions', value: stats.total },
+            { label: 'Avg Score', value: stats.avgScore ? `${stats.avgScore.toFixed(1)}` : '—' },
             { label: 'Hire Rate', value: stats.hireRate ? `${stats.hireRate}%` : '—' },
           ].map((s) => (
-            <div key={s.label} className="card p-4 text-center">
-              <div className="text-2xl font-bold gradient-text">{s.value}</div>
-              <div className="text-[10px] uppercase tracking-wider text-[oklch(0.5_0.01_260)] mt-1">{s.label}</div>
+            <div key={s.label} className="card p-5 flex flex-col justify-center bg-[var(--surface)] border border-[var(--border)]">
+              <div className="text-[11px] font-medium text-[var(--muted)] mb-3">{s.label}</div>
+              <div className="text-3xl font-[var(--font-display)] font-bold text-white tracking-tight">{s.value}</div>
             </div>
           ))}
         </div>
@@ -198,32 +204,43 @@ function DashboardHome({ user }: { user: User }) {
       {/* Recent sessions */}
       {recentSessions.length > 0 && (
         <div>
-          <div className="flex items-center justify-between mb-4">
-            <h2 className="font-[var(--font-display)] font-semibold text-lg">Recent Sessions</h2>
-            <Link href="/dashboard" className="text-xs text-[oklch(0.5_0.01_260)] hover:text-[oklch(0.7_0.01_260)] transition-colors">View all →</Link>
+          <div className="flex items-center justify-between mb-5">
+            <h2 className="font-[var(--font-display)] font-semibold text-lg text-white">Recent Sessions</h2>
+            <Link href="/dashboard" className="text-xs text-[var(--muted)] hover:text-white transition-colors">View all →</Link>
           </div>
           <div className="space-y-2">
             {recentSessions.map((s) => {
               const decision = s.feedback?.decision;
-              const color = decision ? DECISION_COLOR[decision] ?? '' : '';
+              // Clean linear aesthetic doesn't use strong colors for "No Hire", relying on muted tones instead
+              const color = decision === 'Strong Hire' || decision === 'Hire' ? 'text-[var(--accent)]' : 'text-[var(--muted)]';
               const cfg = s.config as { mode?: string; role?: string };
+
               return (
-                <Link key={s.id} href={`/dashboard/${s.id}`} className="card px-5 py-3.5 flex items-center gap-4 hover:border-[oklch(1_0_0/0.15)] transition-all">
-                  <span className="text-xl shrink-0">{s.type === 'technical' ? '💻' : '🗣️'}</span>
-                  <div className="flex-1 min-w-0">
-                    <div className="text-sm font-medium text-[oklch(0.75_0.01_260)] truncate">
-                      {s.type === 'technical' ? 'Technical' : `Behavioral — ${cfg.mode?.replace('_', ' ')}`}
-                      {cfg.role && <span className="ml-2 text-[oklch(0.45_0.01_260)]">· {cfg.role}</span>}
+                <Link key={s.id} href={`/dashboard/${s.id}`} className="card px-5 py-4 flex items-center justify-between group hover:border-[var(--accent-glow)] transition-all bg-[var(--surface)] hover:bg-[var(--surface-hover)]">
+                  <div className="flex items-center gap-4 min-w-0">
+                    <div className="w-10 h-10 rounded bg-[var(--background)] border border-[var(--border)] flex items-center justify-center shrink-0">
+                      <span className="text-lg">{s.type === 'technical' ? '💻' : '🗣️'}</span>
                     </div>
-                    <div className="text-xs text-[oklch(0.4_0.01_260)] mt-0.5">{formatDate(s.created_at)}</div>
+                    <div className="min-w-0">
+                      <div className="text-sm font-medium text-[var(--foreground)] truncate group-hover:text-white transition-colors">
+                        {s.type === 'technical' ? 'Technical' : `Behavioral — ${cfg.mode?.replace('_', ' ')}`}
+                        {cfg.role && <span className="ml-2 text-[var(--muted)] font-normal">· {cfg.role}</span>}
+                      </div>
+                      <div className="text-xs text-[var(--muted)] mt-1">{formatDate(s.created_at)}</div>
+                    </div>
                   </div>
-                  {s.feedback && (
-                    <div className="shrink-0 text-right">
-                      <span className="text-sm font-bold text-[oklch(0.8_0.01_260)]">{s.feedback.overall_score}/10</span>
-                      <div className="text-[10px] font-semibold" style={{ color }}>{decision}</div>
-                    </div>
-                  )}
-                  <span className="text-[oklch(0.3_0.01_260)] shrink-0">→</span>
+
+                  <div className="flex items-center gap-6 shrink-0">
+                    {s.feedback && (
+                      <div className="text-right flex items-center gap-3">
+                        <div className={`text-[11px] font-medium border px-2 py-0.5 rounded ${color} border-current opacity-80`}>
+                          {decision}
+                        </div>
+                        <span className="text-sm font-[var(--font-display)] font-bold text-white w-8 text-right">{s.feedback.overall_score}/10</span>
+                      </div>
+                    )}
+                    <span className="text-[var(--muted)] group-hover:text-white transition-colors">→</span>
+                  </div>
                 </Link>
               );
             })}
@@ -233,10 +250,12 @@ function DashboardHome({ user }: { user: User }) {
 
       {/* Empty state */}
       {stats.total === 0 && (
-        <div className="card p-10 text-center space-y-3">
-          <div className="text-4xl">🎤</div>
-          <h3 className="font-[var(--font-display)] font-semibold text-lg">No sessions yet</h3>
-          <p className="text-sm text-[oklch(0.5_0.01_260)]">Pick a mode above to start your first interview.</p>
+        <div className="card p-12 text-center flex flex-col items-center justify-center border-dashed border-[var(--border)] bg-transparent">
+          <div className="w-16 h-16 rounded-full bg-[var(--surface-hover)] border border-[var(--border)] flex items-center justify-center mb-6">
+            <span className="text-2xl opacity-50 grayscale">🎤</span>
+          </div>
+          <h3 className="font-[var(--font-display)] font-semibold text-lg text-white mb-2 tracking-tight">No sessions yet</h3>
+          <p className="text-sm text-[var(--muted)] max-w-sm">Pick a mode above to start your first interview and we'll track your progress here.</p>
         </div>
       )}
     </div>
