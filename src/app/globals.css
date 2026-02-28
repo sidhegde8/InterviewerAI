@@ -7,13 +7,19 @@
 
 @layer base {
     :root {
-        --background: #000000;
-        --foreground: #EDEDED;
-        --muted: #8A8F98;
-        --border: #1E1F22;
-        --surface: #0A0A0A;
-        --surface-hover: #141517;
+        --background: #09090B;
+        /* zinc-950 */
+        --foreground: #FAFAFA;
+        /* zinc-50 */
+        --muted: #A1A1AA;
+        /* zinc-400 */
+        --border: #27272A;
+        /* zinc-800 */
+        --surface: #18181B;
+        /* zinc-900 */
+        --surface-hover: #27272A;
         --accent: #5E6AD2;
+        /* Iris / Electric Violet */
         --accent-glow: rgba(94, 106, 210, 0.4);
     }
 
