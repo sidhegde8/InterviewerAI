@@ -1,26 +1,67 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+    --font-sans: var(--font-sans), ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    --font-display: var(--font-display), ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+@layer base {
+    :root {
+        --background: #050505;
+        --foreground: #ffffff;
+    }
+
+    body {
+        @apply bg-[#050505] text-[#ededed] antialiased;
+    }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+@layer components {
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+    /* Base Glass panel */
+    .glass-panel {
+        @apply bg-[oklch(0.12_0.02_260)] border border-[oklch(1_0_0/0.08)] rounded-2xl backdrop-blur-md shadow-xl;
+    }
+
+    /* Primary CTA Button */
+    .btn-primary {
+        @apply inline-flex items-center justify-center font-medium rounded-xl text-white bg-gradient-to-r from-[oklch(0.55_0.18_250)] to-[oklch(0.48_0.2_280)] hover:from-[oklch(0.6_0.18_250)] hover:to-[oklch(0.53_0.2_280)] shadow-[0_4px_20px_-4px_oklch(0.55_0.18_250/0.4)] hover:shadow-[0_6px_25px_-4px_oklch(0.55_0.18_250/0.6)] transition-all duration-300;
+    }
+
+    /* Secondary/Outline Button */
+    .btn-secondary {
+        @apply inline-flex items-center justify-center font-medium rounded-xl text-[oklch(0.85_0.01_260)] bg-[oklch(0.2_0.02_260)] border border-[oklch(1_0_0/0.08)] hover:bg-[oklch(0.25_0.02_260)] hover:text-white hover:border-[oklch(1_0_0/0.15)] transition-all duration-200;
+    }
+
+    .card {
+        @apply bg-[oklch(0.12_0.02_260)] border border-[oklch(1_0_0/0.06)] rounded-2xl shadow-lg;
+    }
+
+    .glass-strong {
+        @apply bg-[oklch(0.08_0.02_260/0.7)] backdrop-blur-xl border-b border-[oklch(1_0_0/0.08)];
+    }
+
+    /* Gradients */
+    .gradient-text {
+        @apply text-transparent bg-clip-text bg-gradient-to-r from-[oklch(0.8_0.1_250)] via-[oklch(0.9_0.05_250)] to-[oklch(0.7_0.15_280)];
+    }
+
+    /* Inputs */
+    .input-field {
+        @apply w-full bg-[oklch(0.12_0.02_260)] border border-[oklch(1_0_0/0.12)] focus:border-[oklch(0.55_0.18_250)] focus:ring-1 focus:ring-[oklch(0.55_0.18_250)] rounded-xl px-4 py-3 outline-none transition-all text-[oklch(0.9_0.01_260)] placeholder-[oklch(0.4_0.01_260)];
+    }
+
+    /* Glowing accent card */
+    .glow-accent {
+        @apply relative overflow-hidden;
+    }
+
+    .glow-accent::before {
+        content: '';
+        @apply absolute -inset-1 bg-gradient-to-r from-[oklch(0.55_0.18_250/0.15)] to-transparent rounded-[inherit] -z-10 blur-xl;
+    }
+
+    .typewriter-cursor {
+        @apply inline-block w-2 bg-[oklch(0.55_0.18_250)] ml-1 animate-pulse h-[1.1em] align-middle;
+    }
 }

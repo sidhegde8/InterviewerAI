@@ -1,0 +1,77 @@
+﻿src/app/api/behavioral/feedback/route.ts(2,20): error TS2307: Cannot find module 'openai' or its corresponding type declarations.
+src/app/api/behavioral/greeting/route.ts(2,20): error TS2307: Cannot find module 'openai' or its corresponding type declarations.
+src/app/api/behavioral/stream/route.ts(1,20): error TS2307: Cannot find module 'openai' or its corresponding type declarations.
+src/app/api/interview/stream/route.ts(2,20): error TS2307: Cannot find module 'openai' or its corresponding type declarations.
+src/app/behavioral/session/page.tsx(14,30): error TS2307: Cannot find module 'uuid' or its corresponding type declarations.
+src/app/behavioral/session/page.tsx(463,44): error TS7006: Parameter 'msg' implicitly has an 'any' type.
+src/app/behavioral/session/session-client.tsx(13,30): error TS2307: Cannot find module 'uuid' or its corresponding type declarations.
+src/app/behavioral/session/session-client.tsx(460,44): error TS7006: Parameter 'msg' implicitly has an 'any' type.
+src/app/behavioral/setup/page.tsx(47,46): error TS7006: Parameter 's' implicitly has an 'any' type.
+src/app/dashboard/page.tsx(9,27): error TS2307: Cannot find module '@supabase/supabase-js' or its corresponding type declarations.
+src/app/interview/session/page.tsx(11,30): error TS2307: Cannot find module 'uuid' or its corresponding type declarations.
+src/app/interview/session/page.tsx(14,26): error TS2307: Cannot find module '@monaco-editor/react' or its corresponding type declarations.
+src/app/interview/session/page.tsx(129,40): error TS7006: Parameter 's' implicitly has an 'any' type.
+src/app/interview/session/page.tsx(130,41): error TS7006: Parameter 's' implicitly has an 'any' type.
+src/app/interview/session/page.tsx(131,41): error TS7006: Parameter 's' implicitly has an 'any' type.
+src/app/interview/session/page.tsx(132,43): error TS7006: Parameter 's' implicitly has an 'any' type.
+src/app/interview/session/page.tsx(133,43): error TS7006: Parameter 's' implicitly has an 'any' type.
+src/app/interview/session/page.tsx(134,44): error TS7006: Parameter 's' implicitly has an 'any' type.
+src/app/interview/session/page.tsx(135,43): error TS7006: Parameter 's' implicitly has an 'any' type.
+src/app/interview/session/page.tsx(908,40): error TS7006: Parameter 'v' implicitly has an 'any' type.
+src/app/interview/session/session-client.tsx(11,30): error TS2307: Cannot find module 'uuid' or its corresponding type declarations.
+src/app/interview/session/session-client.tsx(14,26): error TS2307: Cannot find module '@monaco-editor/react' or its corresponding type declarations.
+src/app/interview/session/session-client.tsx(157,40): error TS7006: Parameter 's' implicitly has an 'any' type.
+src/app/interview/session/session-client.tsx(158,41): error TS7006: Parameter 's' implicitly has an 'any' type.
+src/app/interview/session/session-client.tsx(159,41): error TS7006: Parameter 's' implicitly has an 'any' type.
+src/app/interview/session/session-client.tsx(160,43): error TS7006: Parameter 's' implicitly has an 'any' type.
+src/app/interview/session/session-client.tsx(161,43): error TS7006: Parameter 's' implicitly has an 'any' type.
+src/app/interview/session/session-client.tsx(162,44): error TS7006: Parameter 's' implicitly has an 'any' type.
+src/app/interview/session/session-client.tsx(163,43): error TS7006: Parameter 's' implicitly has an 'any' type.
+src/app/interview/session/session-client.tsx(907,40): error TS7006: Parameter 'v' implicitly has an 'any' type.
+src/app/interview/setup/page.tsx(54,45): error TS7006: Parameter 's' implicitly has an 'any' type.
+src/app/login/page.tsx(29,49): error TS7031: Binding element 'user' implicitly has an 'any' type.
+src/app/page.tsx(8,27): error TS2307: Cannot find module '@supabase/supabase-js' or its corresponding type declarations.
+src/app/page.tsx(286,45): error TS7031: Binding element 'user' implicitly has an 'any' type.
+src/components/AppShell.tsx(7,27): error TS2307: Cannot find module '@supabase/supabase-js' or its corresponding type declarations.
+src/components/AppShell.tsx(31,49): error TS7031: Binding element 'user' implicitly has an 'any' type.
+src/components/AppShell.tsx(36,77): error TS7006: Parameter '_event' implicitly has an 'any' type.
+src/components/AppShell.tsx(36,85): error TS7006: Parameter 'session' implicitly has an 'any' type.
+src/components/Chart.tsx(35,25): error TS2769: No overload matches this call.
+  Overload 1 of 2, '(props: XAxisProps): XAxis', gave the following error.
+    Type '{ dataKey: string; stroke: string; fontSize: number; tickLine: false; axisLine: false; dy: number; }' is not assignable to type 'IntrinsicAttributes & IntrinsicClassAttributes<XAxis> & Readonly<XAxisProps>'.
+      Property 'fontSize' does not exist on type 'IntrinsicAttributes & IntrinsicClassAttributes<XAxis> & Readonly<XAxisProps>'.
+  Overload 2 of 2, '(props: XAxisProps, context: any): XAxis', gave the following error.
+    Type '{ dataKey: string; stroke: string; fontSize: number; tickLine: false; axisLine: false; dy: number; }' is not assignable to type 'IntrinsicAttributes & IntrinsicClassAttributes<XAxis> & Readonly<XAxisProps>'.
+      Property 'fontSize' does not exist on type 'IntrinsicAttributes & IntrinsicClassAttributes<XAxis> & Readonly<XAxisProps>'.
+src/components/Chart.tsx(42,25): error TS2769: No overload matches this call.
+  Overload 1 of 2, '(props: YAxisProps): YAxis', gave the following error.
+    Type '{ stroke: string; fontSize: number; tickLine: false; axisLine: false; domain: [number, number]; ticks: number[]; }' is not assignable to type 'IntrinsicAttributes & IntrinsicClassAttributes<YAxis> & Readonly<YAxisProps>'.
+      Property 'fontSize' does not exist on type 'IntrinsicAttributes & IntrinsicClassAttributes<YAxis> & Readonly<YAxisProps>'.
+  Overload 2 of 2, '(props: YAxisProps, context: any): YAxis', gave the following error.
+    Type '{ stroke: string; fontSize: number; tickLine: false; axisLine: false; domain: [number, number]; ticks: number[]; }' is not assignable to type 'IntrinsicAttributes & IntrinsicClassAttributes<YAxis> & Readonly<YAxisProps>'.
+      Property 'fontSize' does not exist on type 'IntrinsicAttributes & IntrinsicClassAttributes<YAxis> & Readonly<YAxisProps>'.
+src/lib/llm/openai-client.ts(1,20): error TS2307: Cannot find module 'openai' or its corresponding type declarations.
+src/lib/resume-parser.ts(15,35): error TS2307: Cannot find module 'pdfjs-dist' or its corresponding type declarations.
+src/lib/resume-parser.ts(32,22): error TS7006: Parameter 'item' implicitly has an 'any' type.
+src/lib/resume-parser.ts(33,19): error TS7006: Parameter 'item' implicitly has an 'any' type.
+src/lib/supabase-server.ts(1,36): error TS2307: Cannot find module '@supabase/ssr' or its corresponding type declarations.
+src/lib/supabase-server.ts(20,24): error TS7006: Parameter 'cookiesToSet' implicitly has an 'any' type.
+src/lib/supabase-server.ts(22,49): error TS7031: Binding element 'name' implicitly has an 'any' type.
+src/lib/supabase-server.ts(22,55): error TS7031: Binding element 'value' implicitly has an 'any' type.
+src/lib/supabase-server.ts(22,62): error TS7031: Binding element 'options' implicitly has an 'any' type.
+src/lib/supabase.ts(1,37): error TS2307: Cannot find module '@supabase/ssr' or its corresponding type declarations.
+src/middleware.ts(1,36): error TS2307: Cannot find module '@supabase/ssr' or its corresponding type declarations.
+src/middleware.ts(25,24): error TS7006: Parameter 'cookiesToSet' implicitly has an 'any' type.
+src/middleware.ts(26,45): error TS7031: Binding element 'name' implicitly has an 'any' type.
+src/middleware.ts(26,51): error TS7031: Binding element 'value' implicitly has an 'any' type.
+src/middleware.ts(30,45): error TS7031: Binding element 'name' implicitly has an 'any' type.
+src/middleware.ts(30,51): error TS7031: Binding element 'value' implicitly has an 'any' type.
+src/middleware.ts(30,58): error TS7031: Binding element 'options' implicitly has an 'any' type.
+src/stores/behavioral-store.ts(1,24): error TS2307: Cannot find module 'zustand' or its corresponding type declarations.
+src/stores/behavioral-store.ts(2,30): error TS2307: Cannot find module 'uuid' or its corresponding type declarations.
+src/stores/behavioral-store.ts(28,60): error TS7006: Parameter 'set' implicitly has an 'any' type.
+src/stores/behavioral-store.ts(28,65): error TS7006: Parameter 'get' implicitly has an 'any' type.
+src/stores/interview-store.ts(1,24): error TS2307: Cannot find module 'zustand' or its corresponding type declarations.
+src/stores/interview-store.ts(2,30): error TS2307: Cannot find module 'uuid' or its corresponding type declarations.
+src/stores/interview-store.ts(33,58): error TS7006: Parameter 'set' implicitly has an 'any' type.
+src/stores/interview-store.ts(33,63): error TS7006: Parameter 'get' implicitly has an 'any' type.
