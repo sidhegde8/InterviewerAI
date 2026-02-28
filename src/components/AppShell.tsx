@@ -60,7 +60,7 @@ export function AppShell({ children }: AppShellProps) {
             <Sidebar userEmail={user?.email} />
 
             {/* Main content — offset by sidebar width on desktop, add padding-bottom on mobile for tab bar */}
-            <main className="flex-1 md:ml-[220px] min-h-screen pb-20 md:pb-0">
+            <main className="flex-1 md:ml-[240px] min-h-screen pb-20 md:pb-0">
                 {children}
             </main>
         </div>

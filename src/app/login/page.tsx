@@ -83,10 +83,10 @@ function LoginContent() {
 
             <div className="w-full max-w-sm space-y-6">
                 <div className="text-center">
-                    <h1 className="font-[var(--font-display)] text-2xl font-bold mb-1">
+                    <h1 className="font-[var(--font-display)] text-2xl font-bold mb-1 text-white tracking-tight">
                         {tab === 'login' ? 'Welcome back' : 'Create account'}
                     </h1>
-                    <p className="text-sm text-[oklch(0.5_0.01_260)]">
+                    <p className="text-sm text-[var(--muted)]">
                         {tab === 'login'
                             ? 'Sign in to see your interview history.'
                             : 'Start tracking your interview progress.'}
@@ -94,14 +94,14 @@ function LoginContent() {
                 </div>
 
                 {/* Tab switcher */}
-                <div className="flex rounded-xl bg-[oklch(0.16_0.02_260)] p-1">
+                <div className="flex rounded-xl bg-[var(--surface)] border border-[var(--border)] p-1">
                     {(['login', 'signup'] as const).map((t) => (
                         <button
                             key={t}
                             onClick={() => { setTab(t); setError(null); setSuccessMsg(null); }}
-                            className={`flex-1 py-2 rounded-lg text-sm font-medium transition-all cursor-pointer ${tab === t
-                                ? 'bg-[oklch(0.22_0.02_260)] text-white shadow'
-                                : 'text-[oklch(0.5_0.01_260)] hover:text-[oklch(0.7_0.01_260)]'
+                            className={`flex-1 py-1.5 rounded-lg text-sm font-medium transition-all cursor-pointer ${tab === t
+                                ? 'bg-[var(--surface-hover)] text-white shadow-sm border border-[var(--border)]'
+                                : 'text-[var(--muted)] hover:text-white border border-transparent'
                                 }`}
                         >
                             {t === 'login' ? 'Log in' : 'Sign up'}
@@ -113,7 +113,7 @@ function LoginContent() {
                     {/* Google sign-in */}
                     <button
                         onClick={handleGoogleSignIn}
-                        className="w-full flex items-center justify-center gap-3 py-2.5 rounded-xl bg-[oklch(0.2_0.02_260)] border border-[oklch(1_0_0/0.08)] hover:bg-[oklch(0.25_0.02_260)] transition-all text-sm font-medium"
+                        className="w-full flex items-center justify-center gap-3 py-2.5 rounded-xl bg-[var(--surface)] border border-[var(--border)] hover:bg-[var(--surface-hover)] transition-all text-sm font-medium text-[var(--foreground)]"
                     >
                         <svg viewBox="0 0 24 24" className="w-4 h-4" aria-hidden="true">
                             <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
@@ -125,15 +125,15 @@ function LoginContent() {
                     </button>
 
                     <div className="flex items-center gap-3">
-                        <div className="flex-1 h-px bg-[oklch(1_0_0/0.06)]" />
-                        <span className="text-[10px] text-[oklch(0.4_0.01_260)] uppercase tracking-wider">or</span>
-                        <div className="flex-1 h-px bg-[oklch(1_0_0/0.06)]" />
+                        <div className="flex-1 h-px bg-[var(--border)]" />
+                        <span className="text-[10px] text-[var(--muted)] uppercase tracking-wider font-semibold">or</span>
+                        <div className="flex-1 h-px bg-[var(--border)]" />
                     </div>
 
                     {/* Email / password form */}
-                    <form onSubmit={handleSubmit} className="space-y-3">
+                    <form onSubmit={handleSubmit} className="space-y-4">
                         <div>
-                            <label className="block text-xs font-medium text-[oklch(0.6_0.01_260)] mb-1.5">
+                            <label className="block text-xs font-semibold tracking-wide uppercase text-[var(--muted)] mb-1.5 ml-1">
                                 Email
                             </label>
                             <input
@@ -146,7 +146,7 @@ function LoginContent() {
                             />
                         </div>
                         <div>
-                            <label className="block text-xs font-medium text-[oklch(0.6_0.01_260)] mb-1.5">
+                            <label className="block text-xs font-semibold tracking-wide uppercase text-[var(--muted)] mb-1.5 ml-1">
                                 Password
                             </label>
                             <input
@@ -161,12 +161,12 @@ function LoginContent() {
                         </div>
 
                         {error && (
-                            <p className="text-xs text-[oklch(0.63_0.22_25)] bg-[oklch(0.63_0.22_25/0.1)] rounded-lg px-3 py-2 leading-relaxed">
+                            <p className="text-xs text-red-400 bg-red-400/10 border border-red-400/20 rounded-lg px-3 py-2 leading-relaxed">
                                 ⚠ {error}
                             </p>
                         )}
                         {successMsg && (
-                            <p className="text-xs text-[oklch(0.72_0.17_165)] bg-[oklch(0.72_0.17_165/0.1)] rounded-lg px-3 py-2 leading-relaxed">
+                            <p className="text-xs text-[var(--accent)] bg-[var(--accent)]/10 border border-[var(--accent)]/20 rounded-lg px-3 py-2 leading-relaxed">
                                 {successMsg}
                             </p>
                         )}
@@ -174,7 +174,7 @@ function LoginContent() {
                         <button
                             type="submit"
                             disabled={isLoading}
-                            className="btn-primary w-full py-2.5 text-sm disabled:opacity-50"
+                            className="btn-primary w-full py-2.5 text-sm disabled:opacity-50 mt-2"
                         >
                             {isLoading
                                 ? 'Loading…'
@@ -185,18 +185,18 @@ function LoginContent() {
                     </form>
                 </div>
 
-                <p className="text-center text-xs text-[oklch(0.4_0.01_260)]">
+                <p className="text-center text-xs text-[var(--muted)]">
                     {tab === 'login' ? "Don't have an account? " : 'Already have an account? '}
                     <button
                         onClick={() => setTab(tab === 'login' ? 'signup' : 'login')}
-                        className="text-[oklch(0.6_0.1_250)] hover:underline cursor-pointer"
+                        className="text-[var(--accent)] hover:underline cursor-pointer font-medium"
                     >
                         {tab === 'login' ? 'Sign up' : 'Log in'}
                     </button>
                 </p>
 
                 <p className="text-center">
-                    <Link href="/" className="text-xs text-[oklch(0.4_0.01_260)] hover:text-[oklch(0.55_0.01_260)]">
+                    <Link href="/" className="text-xs text-[var(--muted)] hover:text-white transition-colors">
                         ← Back to home
                     </Link>
                 </p>
@@ -207,7 +207,7 @@ function LoginContent() {
 
 export default function LoginPage() {
     return (
-        <Suspense fallback={<div className="min-h-screen flex items-center justify-center text-[oklch(0.5_0.01_260)]">Loading...</div>}>
+        <Suspense fallback={<div className="min-h-screen flex items-center justify-center text-[var(--muted)]">Loading...</div>}>
             <LoginContent />
         </Suspense>
     );

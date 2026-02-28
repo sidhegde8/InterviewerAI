@@ -134,11 +134,11 @@ export default function BehavioralSetupPage() {
                         }`}
                 >
                     <div className="text-center mb-10">
-                        <h1 className="font-[var(--font-display)] text-3xl sm:text-4xl font-bold mb-3">
+                        <h1 className="font-[var(--font-display)] text-3xl sm:text-4xl font-bold mb-3 tracking-tight text-white">
                             Behavioral{' '}
-                            <span className="gradient-text">Interview</span>
+                            <span className="text-[var(--accent)]">Interview</span>
                         </h1>
-                        <p className="text-[oklch(0.55_0.01_260)]">
+                        <p className="text-[var(--muted)]">
                             Practice behavioral questions, resume deep-dives, or a mix of both.
                         </p>
                     </div>
@@ -146,7 +146,7 @@ export default function BehavioralSetupPage() {
                     <div className="card space-y-8 p-8">
                         {/* Mode Selection */}
                         <div>
-                            <label className="block text-sm font-medium text-[oklch(0.7_0.01_260)] mb-3">
+                            <label className="block text-xs font-semibold uppercase tracking-wider text-[var(--muted)] mb-3 ml-1">
                                 Interview Mode
                             </label>
                             <div className="grid grid-cols-3 gap-3">
@@ -155,15 +155,15 @@ export default function BehavioralSetupPage() {
                                         key={m.value}
                                         onClick={() => setMode(m.value)}
                                         className={`p-4 rounded-xl border text-left transition-all duration-200 cursor-pointer ${mode === m.value
-                                            ? 'border-[oklch(0.55_0.18_250/0.6)] bg-[oklch(0.55_0.18_250/0.1)] glow-brand'
-                                            : 'border-[oklch(1_0_0/0.08)] bg-[oklch(0.13_0.02_260)] hover:border-[oklch(1_0_0/0.15)]'
+                                            ? 'border-[var(--accent)] bg-[var(--accent)]/10 shadow-[0_0_15px_var(--accent-glow)]'
+                                            : 'border-[var(--border)] bg-[var(--surface)] hover:border-[var(--muted)] hover:bg-[var(--surface-hover)]'
                                             }`}
                                     >
                                         <div className="text-2xl mb-2">{m.icon}</div>
-                                        <div className="font-[var(--font-display)] font-semibold text-sm mb-1">
+                                        <div className={`font-[var(--font-display)] font-semibold text-sm mb-1 ${mode === m.value ? 'text-white' : 'text-[var(--foreground)]'}`}>
                                             {m.label}
                                         </div>
-                                        <div className="text-[10px] text-[oklch(0.5_0.01_260)] leading-snug">
+                                        <div className="text-[10px] text-[var(--muted)] leading-snug">
                                             {m.desc}
                                         </div>
                                     </button>
@@ -174,12 +174,12 @@ export default function BehavioralSetupPage() {
                         {/* Resume Upload */}
                         {showResumeUpload && (
                             <div>
-                                <label className="block text-sm font-medium text-[oklch(0.7_0.01_260)] mb-2">
+                                <label className="block text-xs font-semibold uppercase tracking-wider text-[var(--muted)] mb-2 ml-1">
                                     Resume Upload{' '}
                                     {requiresResume ? (
-                                        <span className="text-[oklch(0.63_0.22_25)]">(required)</span>
+                                        <span className="text-red-400 normal-case tracking-normal opacity-90">(required)</span>
                                     ) : (
-                                        <span className="text-[oklch(0.4_0.01_260)]">(optional — enables resume-specific questions)</span>
+                                        <span className="text-[var(--muted)] normal-case tracking-normal opacity-70">(optional — enables resume-specific questions)</span>
                                     )}
                                 </label>
                                 <div
@@ -187,10 +187,10 @@ export default function BehavioralSetupPage() {
                                     onDragOver={(e) => e.preventDefault()}
                                     onClick={() => fileInputRef.current?.click()}
                                     className={`relative rounded-xl border-2 border-dashed p-6 text-center cursor-pointer transition-all ${resumeText
-                                        ? 'border-[oklch(0.6_0.15_150/0.5)] bg-[oklch(0.6_0.15_150/0.05)]'
+                                        ? 'border-[var(--accent)] bg-[var(--accent)]/5'
                                         : resumeError
-                                            ? 'border-[oklch(0.63_0.22_25/0.5)] bg-[oklch(0.63_0.22_25/0.05)]'
-                                            : 'border-[oklch(1_0_0/0.1)] bg-[oklch(0.13_0.02_260)] hover:border-[oklch(1_0_0/0.2)]'
+                                            ? 'border-red-500/50 bg-red-500/5'
+                                            : 'border-[var(--border)] bg-[var(--surface)] hover:border-[var(--muted)] hover:bg-[var(--surface-hover)]'
                                         }`}
                                 >
                                     <input
@@ -205,33 +205,33 @@ export default function BehavioralSetupPage() {
                                     />
 
                                     {isParsingResume ? (
-                                        <div className="text-[oklch(0.55_0.01_260)]">
+                                        <div className="text-[var(--muted)] font-medium text-sm">
                                             <span className="animate-spin inline-block mr-2">⏳</span>
                                             Parsing resume...
                                         </div>
                                     ) : resumeText ? (
                                         <div>
-                                            <div className="text-[oklch(0.6_0.15_150)] font-medium text-sm mb-1">
+                                            <div className="text-[var(--accent)] font-medium text-sm mb-1">
                                                 ✅ {resumeFile?.name}
                                             </div>
-                                            <div className="text-[10px] text-[oklch(0.5_0.01_260)]">
+                                            <div className="text-[10px] text-[var(--muted)] font-medium">
                                                 {resumeText.length.toLocaleString()} characters extracted — click to replace
                                             </div>
                                         </div>
                                     ) : (
                                         <div>
                                             <div className="text-3xl mb-2">📄</div>
-                                            <div className="text-sm text-[oklch(0.55_0.01_260)]">
+                                            <div className="text-sm font-medium text-[var(--muted)]">
                                                 Drop your resume PDF here or click to upload
                                             </div>
-                                            <div className="text-[10px] text-[oklch(0.4_0.01_260)] mt-1">
+                                            <div className="text-[10px] uppercase tracking-wide font-semibold text-[var(--muted)] mt-1 opacity-70">
                                                 PDF only — max 10MB
                                             </div>
                                         </div>
                                     )}
 
                                     {resumeError && (
-                                        <div className="text-xs text-[oklch(0.63_0.22_25)] mt-2">
+                                        <div className="text-xs text-red-400 font-medium mt-2">
                                             ⚠ {resumeError}
                                         </div>
                                     )}
@@ -241,7 +241,7 @@ export default function BehavioralSetupPage() {
 
                         {/* Role Selection */}
                         <div>
-                            <label className="block text-sm font-medium text-[oklch(0.7_0.01_260)] mb-2">
+                            <label className="block text-xs font-semibold uppercase tracking-wider text-[var(--muted)] mb-2 ml-1">
                                 Target Role
                             </label>
                             <select
@@ -259,9 +259,9 @@ export default function BehavioralSetupPage() {
 
                         {/* Company (optional) */}
                         <div>
-                            <label className="block text-sm font-medium text-[oklch(0.7_0.01_260)] mb-2">
+                            <label className="block text-xs font-semibold uppercase tracking-wider text-[var(--muted)] mb-2 ml-1">
                                 Target Company{' '}
-                                <span className="text-[oklch(0.4_0.01_260)]">(optional)</span>
+                                <span className="text-[var(--muted)] opacity-70 normal-case tracking-normal">(optional)</span>
                             </label>
                             <input
                                 type="text"
@@ -274,7 +274,7 @@ export default function BehavioralSetupPage() {
 
                         {/* Duration */}
                         <div>
-                            <label className="block text-sm font-medium text-[oklch(0.7_0.01_260)] mb-2">
+                            <label className="block text-xs font-semibold uppercase tracking-wider text-[var(--muted)] mb-3 ml-1">
                                 Session Duration
                             </label>
                             <div className="flex gap-3">
@@ -282,9 +282,9 @@ export default function BehavioralSetupPage() {
                                     <button
                                         key={d}
                                         onClick={() => setDuration(d)}
-                                        className={`flex-1 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 cursor-pointer ${duration === d
-                                            ? 'bg-[oklch(0.55_0.18_250)] text-white'
-                                            : 'bg-[oklch(0.22_0.02_260)] text-[oklch(0.7_0.01_260)] hover:bg-[oklch(0.28_0.02_260)]'
+                                        className={`flex-1 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 cursor-pointer border ${duration === d
+                                            ? 'bg-[var(--accent)] text-white border-[var(--accent)] shadow-[0_0_10px_var(--accent-glow)]'
+                                            : 'bg-[var(--surface)] text-[var(--muted)] border-[var(--border)] hover:bg-[var(--surface-hover)] hover:text-white'
                                             }`}
                                     >
                                         {d} min
@@ -294,29 +294,29 @@ export default function BehavioralSetupPage() {
                         </div>
 
                         {/* Summary */}
-                        <div className="rounded-xl bg-[oklch(0.13_0.02_260)] border border-[oklch(1_0_0/0.06)] p-4">
-                            <div className="text-xs text-[oklch(0.5_0.01_260)] uppercase tracking-wider mb-3 font-medium">
+                        <div className="rounded-xl bg-[var(--background)] border border-[var(--border)] p-5">
+                            <div className="text-xs text-[var(--muted)] uppercase tracking-wider mb-4 font-semibold">
                                 Session Preview
                             </div>
-                            <div className="grid grid-cols-2 gap-y-2 text-sm">
-                                <span className="text-[oklch(0.5_0.01_260)]">Mode</span>
-                                <span className="text-right font-medium capitalize">
+                            <div className="grid grid-cols-2 gap-y-3 text-sm">
+                                <span className="text-[var(--muted)]">Mode</span>
+                                <span className="text-right font-medium capitalize text-white">
                                     {MODES.find((m) => m.value === mode)?.label}
                                 </span>
-                                <span className="text-[oklch(0.5_0.01_260)]">Role</span>
-                                <span className="text-right font-medium">{role}</span>
+                                <span className="text-[var(--muted)]">Role</span>
+                                <span className="text-right font-medium text-white">{role}</span>
                                 {company && (
                                     <>
-                                        <span className="text-[oklch(0.5_0.01_260)]">Company</span>
-                                        <span className="text-right font-medium">{company}</span>
+                                        <span className="text-[var(--muted)]">Company</span>
+                                        <span className="text-right font-medium text-white">{company}</span>
                                     </>
                                 )}
-                                <span className="text-[oklch(0.5_0.01_260)]">Resume</span>
-                                <span className="text-right font-medium">
+                                <span className="text-[var(--muted)]">Resume</span>
+                                <span className="text-right font-medium text-white">
                                     {resumeText ? '✅ Uploaded' : 'None'}
                                 </span>
-                                <span className="text-[oklch(0.5_0.01_260)]">Duration</span>
-                                <span className="text-right font-medium">{duration} min</span>
+                                <span className="text-[var(--muted)]">Duration</span>
+                                <span className="text-right font-medium text-white">{duration} min</span>
                             </div>
                         </div>
 
