@@ -34,17 +34,15 @@ export function useSpeechInput({
     const manuallyStoppedRef = useRef(false);
     const accumulatedRef = useRef(''); // running full transcript for this session
 
-    const [state, setState] = useState<SpeechInputState>({
-        isListening: false,
-        isSupported: false,
-        interimTranscript: '',
+    const [state, setState] = useState<SpeechInputState>(() => {
+        const isBrowser = typeof window !== 'undefined';
+        const hasSR = isBrowser && !!(window.SpeechRecognition || window.webkitSpeechRecognition);
+        return {
+            isListening: false,
+            isSupported: hasSR,
+            interimTranscript: '',
+        };
     });
-
-    // Check browser support
-    useEffect(() => {
-        const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
-        if (SR) setState((s) => ({ ...s, isSupported: true }));
-    }, []);
 
     // --- Core: build and start a recognition session ---
     const createAndStart = useCallback(() => {

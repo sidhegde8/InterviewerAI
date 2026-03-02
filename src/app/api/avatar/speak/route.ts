@@ -84,7 +84,8 @@ export async function POST(request: Request) {
 
         const data = await res.json();
         return NextResponse.json(data);
-    } catch (error) {
+    } catch (e: unknown) {
+        console.error('Speak Endpoint Error:', e);
         return NextResponse.json({ error: 'Speak route error' }, { status: 500 });
     }
 }

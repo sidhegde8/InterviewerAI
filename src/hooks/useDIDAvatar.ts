@@ -38,7 +38,7 @@ interface UseDIDAvatarOptions {
 }
 
 export function useDIDAvatar(options: UseDIDAvatarOptions = {}) {
-    const { onStatusChange, onError, fallbackToEmoji = true } = options;
+    const { onStatusChange, onError } = options;
 
     const [status, setStatus] = useState<AvatarStatus>('idle');
     const [isAvailable, setIsAvailable] = useState(false);
@@ -192,7 +192,7 @@ export function useDIDAvatar(options: UseDIDAvatarOptions = {}) {
             }, text.length * 80); // rough estimate
 
             return true;
-        } catch (err) {
+        } catch {
             updateStatus('connected');
             return false;
         }

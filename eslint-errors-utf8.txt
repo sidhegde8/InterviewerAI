@@ -1,0 +1,27 @@
+﻿
+C:\Users\sidhe\OneDrive\Desktop\InterviewerAI\src\app\dashboard\page.tsx
+  6:15  warning  'User' is defined but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\sidhe\OneDrive\Desktop\InterviewerAI\src\app\page.tsx
+  268:19  warning  'setMounted' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\sidhe\OneDrive\Desktop\InterviewerAI\src\hooks\useSpeechInput.ts
+  47:13  error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+C:\Users\sidhe\OneDrive\Desktop\InterviewerAI\src\hooks\useSpeechInput.ts:47:13
+  45 |         const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+  46 |         if (SR && !state.isSupported) {
+> 47 |             setState((s) => ({ ...s, isSupported: true }));
+     |             ^^^^^^^^ Avoid calling setState() directly within an effect
+  48 |         }
+  49 |     }, [state.isSupported]);
+  50 |  react-hooks/set-state-in-effect
+
+Γ£û 3 problems (1 error, 2 warnings)
+

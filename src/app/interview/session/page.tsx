@@ -557,7 +557,7 @@ export default function InterviewSessionPage() {
                 </div>
                 {item.passed && item.evidence && (
                     <p className="ml-7 text-[10px] text-[oklch(0.55_0.05_250)] italic leading-snug border-l-2 border-[oklch(0.55_0.05_250/0.4)] pl-2">
-                        "{item.evidence}"
+                        &quot;{item.evidence}&quot;
                     </p>
                 )}
             </li>

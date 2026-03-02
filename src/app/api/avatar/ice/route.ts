@@ -45,7 +45,8 @@ export async function POST(request: Request) {
         }
 
         return NextResponse.json({ ok: true });
-    } catch (error) {
+    } catch (e: unknown) {
+        console.error('ICE Endpoint Error:', e);
         return NextResponse.json({ error: 'ICE route error' }, { status: 500 });
     }
 }

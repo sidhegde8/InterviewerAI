@@ -8,7 +8,6 @@ import { useSpeechInput } from '@/hooks/useSpeechInput';
 import { useTTS } from '@/hooks/useTTS';
 import type {
     BehavioralMessage,
-    BehavioralFeedback,
     BehavioralChecklistItem,
 } from '@/types/behavioral';
 import { v4 as uuidv4 } from 'uuid';
@@ -18,7 +17,37 @@ import { v4 as uuidv4 } from 'uuid';
 // Full-width chat with voice input — no code editor
 // =====================================================
 
+// ============================================================================
+// Internal Components
+// ============================================================================
+const ScoreCard = ({ label, score }: { label: string; score: number }) => (
+    <div className="card p-4 text-center flex flex-col items-center justify-center gap-2 border border-[oklch(1_0_0/0.05)] bg-[oklch(0.12_0.02_260)]">
+        <span className="text-[10px] text-[oklch(0.5_0.01_260)] uppercase tracking-wider font-semibold">{label}</span>
+        <span className="text-3xl font-bold text-[oklch(0.8_0.01_260)]">
+            {score}<span className="text-lg text-[oklch(0.3_0.01_260)]">/5</span>
+        </span>
+    </div>
+);
 
+const CheckItem = ({ label, item }: { label: string; item: BehavioralChecklistItem }) => (
+    <li className="space-y-1">
+        <div className="flex items-start gap-3 text-sm">
+            <div className={`mt-0.5 shrink-0 w-4 h-4 rounded-full flex items-center justify-center border ${item.passed ? 'bg-[oklch(0.6_0.15_150)] border-[oklch(0.6_0.15_150)] text-black' : 'border-[oklch(0.3_0.02_260)] text-transparent'}`}>
+                <svg viewBox="0 0 14 14" fill="none" className="w-2.5 h-2.5" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <polyline points="3 7.5 6 10.5 11 3.5" />
+                </svg>
+            </div>
+            <span className={item.passed ? 'text-[oklch(0.7_0.01_260)]' : 'text-[oklch(0.4_0.01_260)] line-through'}>
+                {label}
+            </span>
+        </div>
+        {item.passed && item.evidence && (
+            <p className="ml-7 text-[10px] text-[oklch(0.55_0.05_250)] italic leading-snug border-l-2 border-[oklch(0.55_0.05_250/0.4)] pl-2">
+                &quot;{item.evidence}&quot;
+            </p>
+        )}
+    </li>
+);
 
 export default function BehavioralSessionPage() {
     const router = useRouter();
@@ -287,35 +316,6 @@ export default function BehavioralSessionPage() {
     // DEBRIEF VIEW
     // ═══════════════════════════════════════
     if (session.phase === 'debrief' && feedback) {
-        const ScoreCard = ({ label, score }: { label: string; score: number }) => (
-            <div className="card p-4 text-center flex flex-col items-center justify-center gap-2 border border-[oklch(1_0_0/0.05)] bg-[oklch(0.12_0.02_260)]">
-                <span className="text-[10px] text-[oklch(0.5_0.01_260)] uppercase tracking-wider font-semibold">{label}</span>
-                <span className="text-3xl font-bold text-[oklch(0.8_0.01_260)]">
-                    {score}<span className="text-lg text-[oklch(0.3_0.01_260)]">/5</span>
-                </span>
-            </div>
-        );
-
-        const CheckItem = ({ label, item }: { label: string; item: BehavioralChecklistItem }) => (
-            <li className="space-y-1">
-                <div className="flex items-start gap-3 text-sm">
-                    <div className={`mt-0.5 shrink-0 w-4 h-4 rounded-full flex items-center justify-center border ${item.passed ? 'bg-[oklch(0.6_0.15_150)] border-[oklch(0.6_0.15_150)] text-black' : 'border-[oklch(0.3_0.02_260)] text-transparent'}`}>
-                        <svg viewBox="0 0 14 14" fill="none" className="w-2.5 h-2.5" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                            <polyline points="3 7.5 6 10.5 11 3.5" />
-                        </svg>
-                    </div>
-                    <span className={item.passed ? 'text-[oklch(0.7_0.01_260)]' : 'text-[oklch(0.4_0.01_260)] line-through'}>
-                        {label}
-                    </span>
-                </div>
-                {item.passed && item.evidence && (
-                    <p className="ml-7 text-[10px] text-[oklch(0.55_0.05_250)] italic leading-snug border-l-2 border-[oklch(0.55_0.05_250/0.4)] pl-2">
-                        &quot;{item.evidence}&quot;
-                    </p>
-                )}
-            </li>
-        );
-
         const decisionColor =
             feedback.decision === 'Strong Hire'
                 ? 'oklch(0.72_0.17_165)'

@@ -22,7 +22,7 @@ const FEATURES = [
   { icon: '📊', title: 'Detailed Feedback', description: 'Get a scorecard with communication, problem-solving, code quality, and optimization ratings plus actionable improvement tips.' },
 ];
 
-function MarketingPage({ mounted }: { mounted: boolean }) {
+function MarketingPage() {
   return (
     <main className="min-h-screen flex flex-col bg-[var(--background)]">
       {/* Nav */}
@@ -40,7 +40,7 @@ function MarketingPage({ mounted }: { mounted: boolean }) {
       </nav>
 
       {/* Hero */}
-      <section className={`flex flex-col items-center justify-center text-center px-6 pt-40 pb-24 transition-all duration-1000 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+      <section className={`flex flex-col items-center justify-center text-center px-6 pt-40 pb-24 transition-all duration-1000 opacity-100 translate-y-0`}>
         <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[var(--accent-glow)] bg-[var(--accent)]/10 text-sm text-[var(--accent)] mb-6 font-medium tracking-wide">
           <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent)] animate-pulse"></span> Now powered by GPT-4o
         </div>
@@ -109,11 +109,7 @@ interface RecentSession {
   feedback: { overall_score: number; decision: string } | null;
 }
 
-const DECISION_COLOR: Record<string, string> = {
-  'Strong Hire': 'oklch(0.72_0.17_165)',
-  'Hire': 'oklch(0.65_0.14_165)',
-  'No Hire': 'oklch(0.63_0.22_25)',
-};
+
 
 function formatDate(iso: string) {
   return new Date(iso).toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
@@ -255,7 +251,7 @@ function DashboardHome({ user }: { user: User }) {
             <span className="text-2xl opacity-50 grayscale">🎤</span>
           </div>
           <h3 className="font-[var(--font-display)] font-semibold text-lg text-white mb-2 tracking-tight">No sessions yet</h3>
-          <p className="text-sm text-[var(--muted)] max-w-sm">Pick a mode above to start your first interview and we'll track your progress here.</p>
+          <p className="text-sm text-[var(--muted)] max-w-sm">Pick a mode above to start your first interview and we&apos;ll track your progress here.</p>
         </div>
       )}
     </div>
@@ -269,11 +265,9 @@ function DashboardHome({ user }: { user: User }) {
 export default function HomePage() {
   const [user, setUser] = useState<User | null>(null);
   const [isLoading, setIsLoading] = useState(true);
-  const [mounted, setMounted] = useState(false);
   const supabase = createSupabaseBrowserClient();
 
   useEffect(() => {
-    setMounted(true);
     supabase.auth.getUser().then(({ data: { user } }) => {
       setUser(user);
       setIsLoading(false);
@@ -282,7 +276,7 @@ export default function HomePage() {
 
   if (isLoading) return null; // avoid flash
 
-  if (!user) return <MarketingPage mounted={mounted} />;
+  if (!user) return <MarketingPage />;
 
   return <DashboardHome user={user} />;
 }

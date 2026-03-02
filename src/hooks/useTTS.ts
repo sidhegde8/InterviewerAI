@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useRef } from 'react';
+import { useCallback, useRef, useEffect } from 'react';
 
 // =====================================================
 // useTTS — Text-to-Speech Hook
@@ -21,7 +21,9 @@ export function useTTS(options: TTSOptions = {}) {
     const utteranceRef = useRef<SpeechSynthesisUtterance | null>(null);
     // Keep latest options in a ref so callbacks always see up-to-date values
     const optionsRef = useRef(options);
-    optionsRef.current = options;
+    useEffect(() => {
+        optionsRef.current = options;
+    }, [options]);
 
     /**
      * Play audio from ElevenLabs TTS API.

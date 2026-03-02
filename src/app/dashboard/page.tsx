@@ -3,8 +3,23 @@
 import { useEffect, useState, useMemo } from 'react';
 import Link from 'next/link';
 import { createSupabaseBrowserClient } from '@/lib/supabase';
-import type { User } from '@supabase/supabase-js';
+
 import { SkeletonCard } from '@/components/Skeleton';
+
+// Custom Tooltip for Recharts moved out of render cycle
+const CustomTooltip = ({ active, payload }: { active?: boolean; payload?: { value: number; payload: { date: string } }[]; label?: string }) => {
+    if (active && payload && payload.length) {
+        return (
+            <div className="bg-[var(--surface)] border border-[var(--border)] p-3 rounded-lg shadow-xl">
+                <p className="text-[11px] text-[var(--muted)] font-medium mb-1">{payload[0].payload.date}</p>
+                <p className="text-sm text-white font-[var(--font-display)] font-semibold">
+                    Score: <span className="text-[var(--accent)]">{payload[0].value}/10</span>
+                </p>
+            </div>
+        );
+    }
+    return null;
+};
 import {
     Area, AreaChart, ResponsiveContainer, Tooltip as RechartsTooltip, XAxis, YAxis
 } from 'recharts';
@@ -53,7 +68,6 @@ const DECISION_COLOR: Record<string, string> = {
 
 export default function DashboardPage() {
     const [sessions, setSessions] = useState<SessionRow[]>([]);
-    const [user, setUser] = useState<User | null>(null);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
 
@@ -62,7 +76,6 @@ export default function DashboardPage() {
     useEffect(() => {
         async function load() {
             const { data: { user } } = await supabase.auth.getUser();
-            setUser(user);
 
             if (!user) {
                 setIsLoading(false);
@@ -83,15 +96,11 @@ export default function DashboardPage() {
         load();
     }, [supabase]);
 
-    const handleSignOut = async () => {
-        await supabase.auth.signOut();
-        window.location.href = '/login';
-    };
+
 
     // Stats & Chart Data
     const total = sessions.length;
     const technical = sessions.filter((s) => s.type === 'technical').length;
-    const behavioral = sessions.filter((s) => s.type === 'behavioral').length;
 
     // Only count sessions that actually have a decision for the hire rate
     const sessionsWithFeedback = sessions.filter(s => s.feedback && s.feedback.decision);
@@ -122,20 +131,7 @@ export default function DashboardPage() {
             }));
     }, [sessions]);
 
-    // Custom Tooltip for Recharts
-    const CustomTooltip = ({ active, payload, label }: any) => {
-        if (active && payload && payload.length) {
-            return (
-                <div className="bg-[var(--surface)] border border-[var(--border)] p-3 rounded-lg shadow-xl">
-                    <p className="text-[11px] text-[var(--muted)] font-medium mb-1">{payload[0].payload.date}</p>
-                    <p className="text-sm text-white font-[var(--font-display)] font-semibold">
-                        Score: <span className="text-[var(--accent)]">{payload[0].value}/10</span>
-                    </p>
-                </div>
-            );
-        }
-        return null;
-    };
+    // Custom Tooltip for Recharts (moved top-level)
 
     return (
         <main className="min-h-screen flex flex-col bg-[var(--background)] animate-in fade-in duration-500">

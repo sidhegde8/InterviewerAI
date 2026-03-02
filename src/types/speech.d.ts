@@ -48,7 +48,7 @@ interface SpeechRecognition extends EventTarget {
     abort(): void;
 }
 
-declare var SpeechRecognition: {
+declare let SpeechRecognition: {
     prototype: SpeechRecognition;
     new(): SpeechRecognition;
 };

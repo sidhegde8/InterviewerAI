@@ -39,7 +39,7 @@ export async function POST(request: Request) {
 
         const examplesText = problem?.examples?.length
             ? problem.examples
-                .map((e: any, i: number) => `Example ${i + 1}: Input = ${e.input} → Output = ${e.output}`)
+                .map((e: { input: string; output: string }, i: number) => `Example ${i + 1}: Input = ${e.input} → Output = ${e.output}`)
                 .join('\n')
             : 'None provided';
 

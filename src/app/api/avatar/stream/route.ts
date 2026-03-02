@@ -29,12 +29,6 @@ export async function POST() {
     try {
         const auth = getAuthHeader();
 
-        // randomuser.me is consistently accessible by external servers and contains real faces
-        // Override via DID_PRESENTER_URL in .env.local with any publicly reachable image URL
-        const PRESENTER_URL =
-            process.env.DID_PRESENTER_URL ||
-            'https://randomuser.me/api/portraits/women/44.jpg';
-
         const res = await fetch(`${DID_BASE}/talks/streams`, {
             method: 'POST',
             headers: {
